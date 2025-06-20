@@ -113,8 +113,7 @@
 .login-reg-link,
 .login-forgot-password {
   color: purple;
-  width: fit-content;
-  margin: 0 auto;
+  text-align: center;
 }
 .or-word {
   user-select: none;
