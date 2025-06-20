@@ -1,22 +1,27 @@
-.about-us-page,
-.terms-and-conditions-page {
+.about-us-page {
   margin: 3rem 10rem 5rem;
 }
-.terms-and-conditions-page {
+.terms-and-conditions-page,
+.privacy-and-policy-page {
   margin: 3rem auto 5rem;
   width: 700px;
 }
-.terms-and-conditions-title {
+.terms-and-conditions-title,
+.privacy-and-policy-title {
   margin: 0 0 3rem;
 }
-.terms-and-conditions-subtitle {
+.terms-and-conditions-subtitle,
+.privacy-and-policy-subtitle {
   margin: 2rem auto 1rem;
+}
+.privacy-and-policy-section > p {
+  margin-top: 1rem;
 }
 .about-us-container {
   display: flex;
   gap: 2rem;
 }
-.about-us-text-wrapper {
+.about-us-section {
   color: hsl(0, 0%, 40%);
   width: 500px;
   display: flex;

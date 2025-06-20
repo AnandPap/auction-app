@@ -7,7 +7,7 @@ const AboutUs = () => {
     <div className="about-us-page">
       <h1>About Us</h1>
       <div className="about-us-container">
-        <div className="about-us-text-wrapper">
+        <section className="about-us-section">
           <p>
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Id esse omnis exercitationem, labore autem
             quibusdam culpa molestiae fuga reprehenderit laborum facere ex odio nulla delectus aspernatur, porro, iure
@@ -44,7 +44,7 @@ const AboutUs = () => {
             consequatur commodi dolore quibusdam vitae quia magni quaerat sapiente cupiditate ipsum ex, mollitia, rerum
             sunt impedit quod! Possimus qui recusandae velit magni eveniet blanditiis ipsam ut animi quae! Quibusdam.
           </p>
-        </div>
+        </section>
         <div className="about-us-images-wrapper">
           <img src={aboutUs1} alt="Girl1" className="img1" />
           <img src={aboutUs2} alt="Girl2" className="img2" />
