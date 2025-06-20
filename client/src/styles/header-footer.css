@@ -1,0 +1,145 @@
+.header {
+  background-color: var(--header-footer-background);
+  display: flex;
+  justify-content: space-between;
+  padding: 0.25rem 0;
+  align-items: center;
+}
+.header > * {
+  margin: 0.125rem 10rem;
+}
+
+.header-icons {
+  display: flex;
+  gap: 0.75rem;
+  line-height: 0;
+}
+.facebook-icon {
+  width: calc(var(--icon-size) * 4);
+  height: calc(var(--icon-size) * 4);
+  cursor: pointer;
+}
+.insta-icon-wrapper {
+  background-color: gray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: calc(var(--icon-size) * 4 / 5);
+  border-radius: 50%;
+  width: calc(var(--icon-size) * 2.5);
+  height: calc(var(--icon-size) * 2.5);
+  cursor: pointer;
+}
+.insta-icon {
+  width: calc(var(--icon-size) * 2);
+  height: calc(var(--icon-size) * 2);
+}
+.twitter-icon {
+  width: calc(var(--icon-size) * 4.3);
+  height: calc(var(--icon-size) * 4.3);
+  cursor: pointer;
+}
+
+.login-create-account {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+.header-or {
+  color: gray;
+  padding: 2px 1px;
+  user-select: none;
+}
+.header-user-name {
+  color: white;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.footer {
+  background-color: var(--header-footer-background);
+  padding: 1rem 0 3.5rem;
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  overflow-x: auto;
+  gap: 5rem;
+  margin-top: auto;
+}
+.footer > * {
+  max-width: 350px;
+}
+.footer > :first-child {
+  margin-left: 10rem;
+}
+.footer > :last-child {
+  margin-right: 10rem;
+}
+.footer-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.footer-section-title {
+  color: gray;
+  text-transform: uppercase;
+}
+
+.footer-send-email-form {
+  display: flex;
+  gap: 1rem;
+}
+.footer-input {
+  padding: 0.75rem 1rem;
+  background-color: hsl(0, 0%, 25%);
+  border: none;
+  color: white;
+  flex-grow: 1;
+}
+.footer-input::placeholder {
+  color: hsl(0, 0%, 70%);
+}
+.footer-input:focus {
+  outline: none;
+}
+.footer-go-button {
+  border: 3px solid hsl(255, 59%, 63%);
+  background-color: transparent;
+  color: white;
+  flex-grow: 2;
+  background: linear-gradient(to left, transparent 50%, hsl(255, 59%, 63%) 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  transition: background-position 0.5s ease;
+}
+.footer-go-button:hover {
+  background-position: left bottom;
+}
+.arrow-right {
+  margin-inline-start: 0.5rem;
+  color: var(--purple);
+}
+.arrow-right {
+  --arrow-size: 7px;
+  display: inline-block;
+  width: var(--arrow-size);
+  height: var(--arrow-size);
+  border-top: calc(var(--arrow-size) / 3) solid var(--purple);
+  border-right: calc(var(--arrow-size) / 3) solid var(--purple);
+  transform: rotate(45deg);
+  transition: border-top 0s ease 0.1s, border-right 0s ease 0.1s;
+}
+.footer-go-button:hover > .arrow-right {
+  border-top: calc(var(--arrow-size) / 3) solid black;
+  border-right: calc(var(--arrow-size) / 3) solid black;
+  transition-delay: 0.25s;
+}
+
+@media only screen and (max-width: 1300px) {
+  .footer > :first-child {
+    margin-left: 5rem;
+  }
+  .footer > :last-child {
+    margin-right: 5rem;
+  }
+}

@@ -1,0 +1,33 @@
+:root {
+  font-family: Calibri;
+  font-size: medium;
+  --header-footer-background: hsl(0, 0%, 15%);
+  --icon-size: 7px;
+  --purple: hsl(255, 60%, 60%);
+  --darker-purple: hsl(255, 60%, 55%);
+  --milk-color: hsl(0, 0%, 98%);
+}
+
+body,
+p {
+  margin: 0;
+}
+a {
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+}
+a:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+button {
+  cursor: pointer;
+}
+
+.layout {
+  min-height: 100vh;
+  width: 100%;
+  background-color: white;
+}
