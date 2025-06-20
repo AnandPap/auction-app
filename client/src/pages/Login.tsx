@@ -1,7 +1,7 @@
 import { Link } from "react-router";
 import AuctionLogo from "../assets/logo/auction.svg";
 import { useState } from "react";
-import { login } from "../services/fetchFunctions";
+import { logIn } from "../services/fetchFunctions";
 import { useAppDispatch } from "../redux/hooks";
 import { setGuestEnter } from "../redux/auctionapp";
 import { smoothScrollToTop } from "../utils/helper-functions";
@@ -31,9 +31,9 @@ const Login = () => {
     { fieldName: "password", type: "password", placeholder: "********" },
   ];
 
-  const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleLogIn = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const res = await login(loginDetails);
+    const res = await logIn(loginDetails);
     if (res.data.code < 300) console.log("Login successful");
     else setError(res.data.message);
   };
@@ -55,7 +55,7 @@ const Login = () => {
       </div>
       <div className="login-reg-form-wrapper">
         <h2 className="login-reg-title">LOGIN</h2>
-        <form onSubmit={handleLogin} className="login-reg-form">
+        <form onSubmit={handleLogIn} className="login-reg-form">
           {loginFields.map((fieldObj, i) => (
             <LoginRegInput
               key={i}
@@ -71,9 +71,9 @@ const Login = () => {
           </div>
           {error.message && <p className="login-reg-input-error-message">{error.message ? error.message : ""}</p>}
           <button type="submit" className="login-reg-btn">
-            LOGIN
+            LOG IN
           </button>
-          <OtherLoginRegOptions type="Login" />
+          <OtherLoginRegOptions type="Log In" />
           <Link to="/forgot-password" onClick={smoothScrollToTop} className="login-forgot-password">
             Forgot Password?
           </Link>
@@ -81,7 +81,7 @@ const Login = () => {
             <p>First time visiting?</p>
             <div className="login-reg-footer">
               <Link to="/signup" onClick={smoothScrollToTop} className="login-reg-link">
-                Create an account
+                Create an Account
               </Link>
               <span className="or-word">or</span>
               <Link to="/home" onClick={handleGuestEnter} className="login-reg-link">

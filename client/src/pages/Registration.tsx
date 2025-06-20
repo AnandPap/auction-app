@@ -1,7 +1,7 @@
 import { useState } from "react";
 import AuctionLogo from "../assets/logo/auction.svg";
 import { Link } from "react-router";
-import { signup } from "../services/fetchFunctions";
+import { signUp } from "../services/fetchFunctions";
 import { smoothScrollToTop } from "../utils/helper-functions";
 import LoginRegInput from "../components/LoginRegInput";
 import OtherLoginRegOptions from "../components/OtherLoginRegOptions";
@@ -53,13 +53,13 @@ const Registration = () => {
       setErrors((s) => ({ ...s, confirmPassword: "Passwords don't match" }));
   };
 
-  const handleSignup = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSignUp = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     validateRegistrationDetails();
 
     const thereIsAValidationError = Object.values(errors).some((value) => value !== "");
     if (!thereIsAValidationError) {
-      const res = await signup(regDetails);
+      const res = await signUp(regDetails);
       console.log(res);
     }
   };
@@ -76,7 +76,7 @@ const Registration = () => {
       </div>
       <div className="login-reg-form-wrapper">
         <h2 className="login-reg-title">REGISTRATION</h2>
-        <form onSubmit={handleSignup} className="login-reg-form">
+        <form onSubmit={handleSignUp} className="login-reg-form">
           {registrationFields.map((fieldObj, i) => (
             <LoginRegInput
               key={i}
@@ -88,13 +88,13 @@ const Registration = () => {
             />
           ))}
           <button type="submit" className="login-reg-btn">
-            SIGNUP
+            SIGN UP
           </button>
-          <OtherLoginRegOptions type="Signup" />
+          <OtherLoginRegOptions type="Sign Up" />
           <div className="login-reg-footer-wrapper">
             <p>Already have an account?</p>
             <Link to="/login" onClick={smoothScrollToTop} className="login-reg-link">
-              Login
+              Log In
             </Link>
           </div>
         </form>

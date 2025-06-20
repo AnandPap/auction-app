@@ -6,7 +6,7 @@ import { axiosInstance } from "./axiosInstance";
 //   message: string;
 // }
 
-interface SignupUser {
+interface SignUpUser {
   firstName: string;
   lastName: string;
   email: string;
@@ -19,7 +19,7 @@ interface LoginDetails {
   password: string;
 }
 
-export const login = async (loginDetails: LoginDetails) => {
+export const logIn = async (loginDetails: LoginDetails) => {
   try {
     const res = await axiosInstance.post("/api/login", loginDetails);
     return res.data;
@@ -28,7 +28,7 @@ export const login = async (loginDetails: LoginDetails) => {
   }
 };
 
-export const signup = async (user: SignupUser) => {
+export const signUp = async (user: SignUpUser) => {
   try {
     const res = await axiosInstance.post("/api/login", user);
     return res.data;

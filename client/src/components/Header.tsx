@@ -18,11 +18,11 @@ const Header = () => {
       ) : (
         <div className="login-create-account">
           <Link to="/login" className="login-link">
-            Login
+            Log In
           </Link>
           <span className="header-or">or</span>
           <Link to="/signup" className="create-account-link">
-            Create an account
+            Create an Account
           </Link>
         </div>
       )}
