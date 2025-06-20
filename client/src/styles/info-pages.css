@@ -1,5 +1,16 @@
-.about-us-page {
-  margin: 3rem 10rem;
+.about-us-page,
+.terms-and-conditions-page {
+  margin: 3rem 10rem 5rem;
+}
+.terms-and-conditions-page {
+  margin: 3rem auto 5rem;
+  width: 700px;
+}
+.terms-and-conditions-title {
+  margin: 0 0 3rem;
+}
+.terms-and-conditions-subtitle {
+  margin: 2rem auto 1rem;
 }
 .about-us-container {
   display: flex;

@@ -1,14 +1,21 @@
 import { Link } from "react-router";
 import IconGroup from "./IconGroup";
+import { smoothScrollToTop } from "../utils/helper-functions";
 
 const Footer = () => {
   return (
     <footer className="footer">
       <section className="footer-section">
         <h3 className="footer-section-title">AUCTION</h3>
-        <Link to="/about-us">About Us</Link>
-        <Link to="/terms-and-conditions">Terms and Conditions</Link>
-        <Link to="/privacy-and-policy">Privacy and Policy</Link>
+        <Link to="/about-us" onClick={smoothScrollToTop}>
+          About Us
+        </Link>
+        <Link to="/terms-and-conditions" onClick={smoothScrollToTop}>
+          Terms and Conditions
+        </Link>
+        <Link to="/privacy-and-policy" onClick={smoothScrollToTop}>
+          Privacy and Policy
+        </Link>
       </section>
       <section className="footer-section">
         <h3 className="footer-section-title">GET IN TOUCH</h3>
