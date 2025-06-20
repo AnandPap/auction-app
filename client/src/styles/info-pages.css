@@ -1,0 +1,40 @@
+.error-boundary-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+}
+.error-boundary-title {
+  font-size: 1.875rem;
+  font-weight: 700;
+  margin: 0;
+  margin-bottom: 0.5rem;
+}
+.back-refresh-button-container {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+.error-boundary-button {
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  width: 125px;
+  font-size: 1rem;
+}
+.back-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.25rem;
+}
+.arrow-left {
+  --arrow-left-size: 6px;
+  display: inline-block;
+  width: var(--arrow-left-size);
+  height: var(--arrow-left-size);
+  border-bottom: calc(var(--arrow-left-size) / 3) solid black;
+  border-left: calc(var(--arrow-left-size) / 3) solid black;
+  transform: rotate(45deg);
+  margin-right: 5px;
+  margin-bottom: 2px;
+}
