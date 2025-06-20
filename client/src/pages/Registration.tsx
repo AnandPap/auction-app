@@ -71,8 +71,8 @@ const Registration = () => {
 
   return (
     <div className="login-reg-page">
-      <div className="auction-logo-wrapper">
-        <img className="auction-logo" src={AuctionLogo} alt="Auction Logo" />
+      <div className="login-reg-auction-logo-wrapper">
+        <img className="login-reg-auction-logo" src={AuctionLogo} alt="Auction Logo" />
       </div>
       <div className="login-reg-form-wrapper">
         <h2 className="login-reg-title">REGISTRATION</h2>

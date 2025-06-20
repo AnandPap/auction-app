@@ -1,3 +1,30 @@
+.not-found-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0rem 0 6rem;
+}
+.auction-logo-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 150px;
+  overflow: hidden;
+}
+.auction-logo {
+  height: 75px;
+  transform: scale(2);
+}
+.four-o-four {
+  color: var(--purple);
+  font-size: 10rem;
+  text-shadow: 3px 3px 0px var(--shadow-gray);
+}
+.not-found-message {
+  margin: 4rem 0 2rem;
+}
+
 .error-boundary-container {
   display: flex;
   flex-direction: column;
@@ -10,22 +37,21 @@
   margin: 0;
   margin-bottom: 0.5rem;
 }
-.back-refresh-button-container {
+.error-boundary-buttons-container {
   display: flex;
   gap: 1rem;
   margin-top: 2rem;
 }
-.error-boundary-button {
-  padding: 0.75rem 1rem;
-  cursor: pointer;
-  width: 125px;
-  font-size: 1rem;
-}
+.refresh-button,
 .back-button {
+  padding: 0.75rem 0.875rem;
+  width: 125px;
+}
+.refresh-button {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 0.25rem;
+  gap: 0.5rem;
 }
 .arrow-left {
   --arrow-left-size: 6px;
