@@ -1,12 +1,6 @@
 .login-reg-auction-logo-wrapper {
   border-bottom: 1px solid black;
   text-align: center;
-  max-height: 75px;
-  overflow: hidden;
-}
-.login-reg-auction-logo {
-  height: 75px;
-  transform: scale(2);
 }
 
 .login-reg-form-wrapper {

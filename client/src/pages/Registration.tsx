@@ -1,5 +1,5 @@
 import { useState } from "react";
-import AuctionLogo from "../assets/logo/auction.svg";
+import AuctionLogo from "../assets/logo/auctionapplogo.png";
 import { Link } from "react-router";
 import { signUp } from "../services/fetchFunctions";
 import { smoothScrollToTop } from "../utils/helper-functions";
@@ -72,7 +72,7 @@ const Registration = () => {
   return (
     <div className="login-reg-page">
       <div className="login-reg-auction-logo-wrapper">
-        <img className="login-reg-auction-logo" src={AuctionLogo} alt="Auction Logo" />
+        <img src={AuctionLogo} alt="Auction Logo" />
       </div>
       <div className="login-reg-form-wrapper">
         <h2 className="login-reg-title">REGISTRATION</h2>

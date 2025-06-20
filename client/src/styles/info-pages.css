@@ -1,3 +1,41 @@
+.about-us-page {
+  margin: 3rem 10rem;
+}
+.about-us-container {
+  display: flex;
+  gap: 2rem;
+}
+.about-us-text-wrapper {
+  color: hsl(0, 0%, 40%);
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  flex-grow: 1;
+}
+.about-us-images-wrapper {
+  width: 400px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 1rem;
+}
+.img1 {
+  grid-column: 1 / span 2;
+  grid-row: 1;
+  width: 100%;
+}
+.img2 {
+  grid-column: 1;
+  grid-row: 2;
+  width: 100%;
+}
+.img3 {
+  grid-column: 2;
+  grid-row: 2;
+  width: 100%;
+}
+
 .not-found-page {
   display: flex;
   flex-direction: column;
@@ -5,16 +43,8 @@
   align-items: center;
   margin: 0rem 0 6rem;
 }
-.auction-logo-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 150px;
-  overflow: hidden;
-}
 .auction-logo {
-  height: 75px;
-  transform: scale(2);
+  margin: 2rem 0 3rem;
 }
 .four-o-four {
   color: var(--purple);
