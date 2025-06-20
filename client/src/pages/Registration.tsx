@@ -87,7 +87,7 @@ const Registration = () => {
               inputOnChange={inputOnChange}
             />
           ))}
-          <button type="submit" className="login-reg-btn">
+          <button type="submit" className="login-reg-button">
             SIGN UP
           </button>
           <OtherLoginRegOptions type="Sign Up" />

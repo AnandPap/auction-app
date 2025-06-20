@@ -70,7 +70,7 @@ const Login = () => {
             <input id="remember-me" type="checkbox" />
           </div>
           {error.message && <p className="login-reg-input-error-message">{error.message ? error.message : ""}</p>}
-          <button type="submit" className="login-reg-btn">
+          <button type="submit" className="login-reg-button">
             LOG IN
           </button>
           <OtherLoginRegOptions type="Log In" />
