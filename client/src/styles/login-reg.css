@@ -1,6 +1,11 @@
 .login-reg-auction-logo-wrapper {
   border-bottom: 1px solid black;
   text-align: center;
+  padding: 1rem 0;
+  height: 50px;
+}
+.login-reg-auction-logo {
+  height: 100%;
 }
 
 .login-reg-form-wrapper {
@@ -120,4 +125,8 @@
 }
 .remember-me-wrapper > input {
   width: 0.75rem;
+}
+
+.reset-password-button {
+  margin: 1rem 0;
 }

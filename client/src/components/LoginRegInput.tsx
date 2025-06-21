@@ -9,11 +9,16 @@ interface FieldObj {
   placeholder: string;
 }
 
+interface ForgotPassword {
+  email: string;
+  [key: string]: string;
+}
+
 interface LoginRegInput {
   fieldObj: FieldObj;
   isError: boolean;
   errorMessage?: string;
-  details: LoginDetails | RegDetails;
+  details: LoginDetails | RegDetails | ForgotPassword;
   inputOnChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 

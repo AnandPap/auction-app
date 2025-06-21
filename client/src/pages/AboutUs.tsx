@@ -7,7 +7,7 @@ const AboutUs = () => {
     <div className="about-us-page">
       <h1>About Us</h1>
       <div className="about-us-container">
-        <section className="about-us-section">
+        <section className="about-us-section pale-text">
           <p>
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Id esse omnis exercitationem, labore autem
             quibusdam culpa molestiae fuga reprehenderit laborum facere ex odio nulla delectus aspernatur, porro, iure

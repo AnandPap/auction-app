@@ -1,5 +1,4 @@
 import { Link } from "react-router";
-import AuctionLogo from "../assets/logo/auctionapplogo.png";
 import { useState } from "react";
 import { logIn } from "../services/fetchFunctions";
 import { useAppDispatch } from "../redux/hooks";
@@ -7,6 +6,7 @@ import { setGuestEnter } from "../redux/auctionapp";
 import { smoothScrollToTop } from "../utils/helper-functions";
 import LoginRegInput from "../components/LoginRegInput";
 import OtherLoginRegOptions from "../components/OtherLoginRegOptions";
+import LoginRegAuctionLogo from "../components/LoginRegAuctionLogo";
 
 export interface LoginDetails {
   email: string;
@@ -50,9 +50,7 @@ const Login = () => {
 
   return (
     <div className="login-reg-page">
-      <div className="login-reg-auction-logo-wrapper">
-        <img src={AuctionLogo} alt="Auction Logo" />
-      </div>
+      <LoginRegAuctionLogo />
       <div className="login-reg-form-wrapper">
         <h2 className="login-reg-title">LOGIN</h2>
         <form onSubmit={handleLogIn} className="login-reg-form">

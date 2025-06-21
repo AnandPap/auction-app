@@ -4,7 +4,7 @@ const TermsAndConditions = () => {
       <h1 className="terms-and-conditions-title">Terms and Conditions</h1>
       <section className="terms-and-conditions-section">
         <h2 className="terms-and-conditions-subtitle">Some title</h2>
-        <p>
+        <p className="pale-text">
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Id esse omnis exercitationem, labore autem quibusdam
           culpa molestiae fuga reprehenderit laborum facere ex odio nulla delectus aspernatur, porro, iure numquam?
           Cumque inventore, enim rem quae illum nesciunt voluptates facilis praesentium pariatur. Atque qui odio
@@ -16,7 +16,7 @@ const TermsAndConditions = () => {
       </section>
       <section className="terms-and-conditions-section">
         <h2 className="terms-and-conditions-subtitle">Some title</h2>
-        <p>
+        <p className="pale-text">
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Id esse omnis exercitationem, labore autem quibusdam
           culpa molestiae fuga reprehenderit laborum facere ex odio nulla delectus aspernatur, porro, iure numquam?
           Cumque inventore, enim rem quae illum nesciunt voluptates facilis praesentium pariatur. Atque qui odio
@@ -28,7 +28,7 @@ const TermsAndConditions = () => {
       </section>
       <section className="terms-and-conditions-section">
         <h2 className="terms-and-conditions-subtitle">Some title</h2>
-        <p>
+        <p className="pale-text">
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Id esse omnis exercitationem, labore autem quibusdam
           culpa molestiae fuga reprehenderit laborum facere ex odio nulla delectus aspernatur, porro, iure numquam?
           Cumque inventore, enim rem quae illum nesciunt voluptates facilis praesentium pariatur. Atque qui odio
