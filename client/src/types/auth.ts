@@ -20,7 +20,9 @@ export type RegDetails = SignUpRequest & {
 };
 export type RegErrors = RegDetails;
 
-export type AuthResponse = { token: string; error: null } | { token: null; error: string };
+export type AuthResponse =
+  | { success: boolean; token: string; error: null }
+  | { success: boolean; token: null; error: string };
 
 export interface LoginRegInputProps {
   fieldObj: FieldObj;

@@ -29,10 +29,9 @@ const Login = () => {
   const handleLogIn = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const res = await logIn(loginDetails);
-    if (res) {
-      console.log("Login successful");
-      // console.log(res of type AuthResponse);
-    }
+    if (!res) setError({ message: "Unexpected error occured", type: "user" });
+    else if ("code" in res) console.log(res);
+    else console.log(res.error);
   };
 
   const handleGuestEnter = () => {
