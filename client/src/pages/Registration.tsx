@@ -18,11 +18,11 @@ type RegErrors = RegDetails;
 
 const Registration = () => {
   const [regDetails, setRegDetails] = useState<RegDetails>({
-    firstName: "s",
-    lastName: "s",
+    firstName: "asd",
+    lastName: "asd",
     email: "asd@asd.asd",
-    password: "asdqwe",
-    confirmPassword: "asdqwe",
+    password: "asdqweas",
+    confirmPassword: "asdqweas",
   });
   const [errors, setErrors] = useState<RegErrors>({
     firstName: "",
