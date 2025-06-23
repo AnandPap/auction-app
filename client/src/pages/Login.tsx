@@ -7,12 +7,7 @@ import { smoothScrollToTop } from "../utils/helper-functions";
 import LoginRegInput from "../components/LoginRegInput";
 import OtherLoginRegOptions from "../components/OtherLoginRegOptions";
 import LoginRegAuctionLogo from "../components/LoginRegAuctionLogo";
-
-export interface LoginDetails {
-  email: string;
-  password: string;
-  [key: string]: string;
-}
+import type { LoginDetails } from "../types/auth";
 
 const Login = () => {
   const [loginDetails, setLoginDetails] = useState<LoginDetails>({
@@ -34,8 +29,10 @@ const Login = () => {
   const handleLogIn = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const res = await logIn(loginDetails);
-    if (res.data.code < 300) console.log("Login successful");
-    else setError(res.data.message);
+    if (res) {
+      console.log("Login successful");
+      // console.log(res of type AuthResponse);
+    }
   };
 
   const handleGuestEnter = () => {

@@ -1,11 +1,7 @@
-import { type ReactNode, type ErrorInfo, Component } from "react";
+import { type ErrorInfo, Component } from "react";
 import BackButton from "../components/BackButton";
 import RefreshButton from "../components/RefreshButton";
-
-interface ErrorBoundaryProps {
-  fallback?: ReactNode;
-  children: ReactNode;
-}
+import type { ErrorBoundaryProps } from "../types/auction";
 
 class ErrorBoundary extends Component<ErrorBoundaryProps> {
   state = { hasError: false };

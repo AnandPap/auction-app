@@ -1,11 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import type { RootState } from "./store";
-
-interface AuctionAppState {
-  loggedIn: boolean;
-  guestEnter: boolean;
-}
+import type { AuctionAppState } from "../types/auction";
 
 const initialState: AuctionAppState = {
   loggedIn: false,

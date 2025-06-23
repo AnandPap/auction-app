@@ -5,16 +5,7 @@ import { smoothScrollToTop } from "../utils/helper-functions";
 import LoginRegInput from "../components/LoginRegInput";
 import OtherLoginRegOptions from "../components/OtherLoginRegOptions";
 import LoginRegAuctionLogo from "../components/LoginRegAuctionLogo";
-
-export interface RegDetails {
-  firstName: string;
-  lastName: string;
-  email: string;
-  password: string;
-  confirmPassword: string;
-  [key: string]: string;
-}
-type RegErrors = RegDetails;
+import type { RegDetails, RegErrors } from "../types/auth";
 
 const Registration = () => {
   const [regDetails, setRegDetails] = useState<RegDetails>({
