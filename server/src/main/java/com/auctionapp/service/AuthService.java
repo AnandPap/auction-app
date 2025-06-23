@@ -36,11 +36,14 @@ public class AuthService {
             throw new EmailAlreadyExistsException("Email already exists");
         }
 
-        User user = new User();
-        user.setFirstName(req.getFirstName());
-        user.setLastName(req.getLastName());
-        user.setEmail(req.getEmail());
-        user.setPassword(passwordEncoder.encode(req.getPassword()));
+        User user = User.builder()
+                .firstName(req.getFirstName())
+                .lastName(req.getLastName())
+                .email(req.getEmail())
+                .role(User.Role.USER)
+                .password(passwordEncoder.encode(req.getPassword()))
+                .build();
+
         userRepo.save(user);
 
         String jwt = jwtService.generateToken(user);
@@ -49,14 +52,14 @@ public class AuthService {
 
     public AuthResponse login(LoginRequest req, BindingResult result) {
         if (result.hasErrors()) {
-            throw new ValidationException("Invalid registration details");
+            throw new ValidationException("Invalid login details");
         }
 
         User user = userRepo.findByEmail(req.getEmail())
                 .orElseThrow(() -> new UsernameNotFoundException("User with email " + req.getEmail() + " not found"));
 
         if (!passwordEncoder.matches(req.getPassword(), user.getPassword())) {
-            throw new BadCredentialsException("Invalid credentials");
+            throw new BadCredentialsException("Email or password is incorrect");
         }
 
         String jwt = jwtService.generateToken(user);
