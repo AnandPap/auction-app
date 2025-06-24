@@ -34,3 +34,41 @@ button {
   display: flex;
   flex-direction: column;
 }
+
+.toast-box {
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%);
+  top: -100px;
+  min-width: fit-content;
+  width: 250px;
+  max-width: 90%;
+  background-color: white;
+  text-align: center;
+  padding: 15px 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  transition: top 0.5s;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: larger;
+}
+.toast-box.show {
+  top: 30px;
+}
+.toast-box.success {
+  color: green;
+}
+.toast-box.error {
+  color: rgb(175, 0, 32);
+}
+.toast-box > img {
+  width: 30px;
+}
+
+@media only screen and (max-width: 600px) {
+  .toast-box {
+  }
+}

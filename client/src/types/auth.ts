@@ -1,11 +1,14 @@
 import type { FieldObj } from "./auction";
 
-export interface SignUpRequest {
+export interface User {
   firstName: string;
   lastName: string;
   email: string;
-  password: string;
+  role: string;
 }
+export type SignUpRequest = Omit<User, "role"> & {
+  password: string;
+};
 export interface LogInRequest {
   email: string;
   password: string;
@@ -21,8 +24,8 @@ export type RegDetails = SignUpRequest & {
 export type RegErrors = RegDetails;
 
 export type AuthResponse =
-  | { success: boolean; token: string; error: null }
-  | { success: boolean; token: null; error: string };
+  | { token: string; user: User; error: null; success: boolean }
+  | { token: null; user: null; error: string; success: boolean };
 
 export interface LoginRegInputProps {
   fieldObj: FieldObj;
@@ -35,4 +38,21 @@ export interface LoginRegInputProps {
 export interface ForgotPassword {
   email: string;
   [key: string]: string;
+}
+
+export interface Toast {
+  text: string;
+  show: boolean;
+  type: "success" | "error" | undefined;
+}
+
+export interface ReduxAuth {
+  user: User | null;
+  isGuest: boolean;
+  token: string | null;
+}
+
+export interface AuctionAppState {
+  auth: ReduxAuth;
+  toast: Toast;
 }

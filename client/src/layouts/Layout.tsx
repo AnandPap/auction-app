@@ -1,24 +1,17 @@
-import { useEffect } from "react";
-import { Outlet, useNavigate } from "react-router";
-import { useAppSelector } from "../redux/hooks";
-import { selectLoggedIn } from "../redux/auctionapp";
+import { Outlet } from "react-router";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import Toast from "../components/Toast";
+import { useAppSelector } from "../redux/hooks";
+import { selectToast } from "../redux/auctionapp";
 
 const Layout = () => {
-  const navigate = useNavigate();
-  const isLoggedIn = useAppSelector(selectLoggedIn);
-
-  useEffect(() => {
-    if (location.pathname === "/")
-      if (isLoggedIn) navigate("/home", { replace: true });
-      else navigate("/login", { replace: true });
-    //eslint-disable-next-line
-  }, []);
+  const toast = useAppSelector(selectToast);
 
   return (
     <div className="layout">
       <Header />
+      <Toast text={toast.text} show={toast.show} type={toast.type} />
       <main>
         <Outlet />
       </main>
