@@ -2,10 +2,10 @@ import { Navigate, Outlet } from "react-router";
 import { useAppSelector } from "../redux/hooks";
 import { selectAuth } from "../redux/auctionapp";
 
-const ProtectedRoute = () => {
+const PublicRoute = () => {
   const auth = useAppSelector(selectAuth);
 
-  return auth.isGuest || auth.token ? <Outlet /> : <Navigate to="/login" replace />;
+  return auth.token ? <Navigate to="/home" replace /> : <Outlet />;
 };
 
-export default ProtectedRoute;
+export default PublicRoute;

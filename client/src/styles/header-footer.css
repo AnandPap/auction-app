@@ -4,6 +4,7 @@
   justify-content: space-between;
   padding: 0.25rem 0;
   align-items: center;
+  color: white;
 }
 .header > * {
   margin: 0.125rem 10rem;
@@ -45,14 +46,13 @@
   align-items: center;
   gap: 0.9rem;
 }
-.header-or {
+.header-separator {
   color: gray;
   padding: 2px 1px;
   user-select: none;
 }
 .header-user-name {
   color: white;
-  text-decoration: underline;
   text-underline-offset: 4px;
 }
 

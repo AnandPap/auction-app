@@ -1,8 +1,8 @@
-import { Link } from "react-router";
 import { useState } from "react";
-import { logIn } from "../services/fetchFunctions";
+import { Link, useNavigate } from "react-router";
+import { logInUser } from "../services/fetchFunctions";
 import { useAppDispatch } from "../redux/hooks";
-import { setGuestEnter } from "../redux/auctionapp";
+import { continueAsGuest, login, setToast } from "../redux/auctionapp";
 import { smoothScrollToTop } from "../utils/helper-functions";
 import LoginRegInput from "../components/LoginRegInput";
 import OtherLoginRegOptions from "../components/OtherLoginRegOptions";
@@ -11,15 +11,13 @@ import type { LoginDetails } from "../types/auth";
 
 const Login = () => {
   const [loginDetails, setLoginDetails] = useState<LoginDetails>({
-    email: "asd@asd.asd",
-    password: "asdasdqwe",
+    email: "anandpap@live.com",
+    password: "asdasdasd",
   });
-  const [error, setError] = useState({
-    message: "Email and password do not match",
-    type: "user",
-  });
+  const [error, setError] = useState("");
 
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const loginFields = [
     { fieldName: "email", type: "text", placeholder: "user@domain.com" },
@@ -28,19 +26,31 @@ const Login = () => {
 
   const handleLogIn = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const res = await logIn(loginDetails);
-    if (!res) setError({ message: "Unexpected error occured", type: "user" });
-    else if ("code" in res) console.log(res);
-    else console.log(res.error);
+    const res = await logInUser(loginDetails);
+    if (!res || "code" in res) setError("Unexpected error occured");
+    else if (res.token === null) {
+      setError(res.error || "Login failed");
+    } else {
+      dispatch(login({ user: res.user, token: res.token }));
+      navigate("/home");
+      dispatch(
+        setToast({
+          text: "Login successful",
+          type: "success",
+        })
+      );
+      smoothScrollToTop();
+    }
   };
 
   const handleGuestEnter = () => {
-    dispatch(setGuestEnter(true));
+    dispatch(continueAsGuest());
+    navigate("/home");
     smoothScrollToTop();
   };
 
   const inputOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (error.message !== "") setError({ type: "", message: "" });
+    if (error !== "") setError("");
     setLoginDetails((s) => ({ ...s, [e.target.name]: e.target.value }));
   };
 
@@ -54,7 +64,7 @@ const Login = () => {
             <LoginRegInput
               key={i}
               fieldObj={fieldObj}
-              isError={error.message !== ""}
+              isError={error !== ""}
               details={loginDetails}
               inputOnChange={inputOnChange}
             />
@@ -63,7 +73,7 @@ const Login = () => {
             <label htmlFor="remember-me">Remember me</label>
             <input id="remember-me" type="checkbox" />
           </div>
-          {error.message && <p className="login-reg-input-error-message">{error.message ? error.message : ""}</p>}
+          {error && <p className="login-reg-input-error-message">{error ? error : ""}</p>}
           <button type="submit" className="login-reg-button">
             LOG IN
           </button>
@@ -77,7 +87,7 @@ const Login = () => {
               <Link to="/signup" onClick={smoothScrollToTop} className="login-reg-link">
                 Create an Account
               </Link>
-              <span className="or-word">or</span>
+              <span className="separator">or</span>
               <Link to="/home" onClick={handleGuestEnter} className="login-reg-link">
                 Continue as Guest
               </Link>

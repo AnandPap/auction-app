@@ -1,19 +1,21 @@
 import { useState } from "react";
-import { Link } from "react-router";
-import { signUp } from "../services/fetchFunctions";
+import { Link, useNavigate } from "react-router";
+import { signUpUser } from "../services/fetchFunctions";
 import { smoothScrollToTop } from "../utils/helper-functions";
 import LoginRegInput from "../components/LoginRegInput";
 import OtherLoginRegOptions from "../components/OtherLoginRegOptions";
 import LoginRegAuctionLogo from "../components/LoginRegAuctionLogo";
 import type { RegDetails, RegErrors } from "../types/auth";
+import { useAppDispatch } from "../redux/hooks";
+import { login, setToast } from "../redux/auctionapp";
 
 const Registration = () => {
   const [regDetails, setRegDetails] = useState<RegDetails>({
-    firstName: "asd",
-    lastName: "asd",
-    email: "asd@asd.asd",
-    password: "asdqweas",
-    confirmPassword: "asdqweas",
+    firstName: "Anand",
+    lastName: "Pap",
+    email: "anandpap@live.com",
+    password: "asdasdasd",
+    confirmPassword: "asdasdasd",
   });
   const [errors, setErrors] = useState<RegErrors>({
     firstName: "",
@@ -22,7 +24,10 @@ const Registration = () => {
     password: "",
     confirmPassword: "",
   });
-  // const [serverError, setServerError] = useState("");
+  const [serverError, setServerError] = useState("");
+
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const registrationFields = [
     { fieldName: "firstName", type: "text", placeholder: "Jon" },
@@ -50,8 +55,21 @@ const Registration = () => {
 
     const thereIsAValidationError = Object.values(errors).some((value) => value !== "");
     if (!thereIsAValidationError) {
-      const res = await signUp(regDetails);
-      console.log(res);
+      const res = await signUpUser(regDetails);
+      if (!res || "code" in res) setServerError(res?.errorData.error || "Unexpected error occured");
+      else if (res.token === null) {
+        setServerError(res.error || "Registration failed");
+      } else {
+        dispatch(login({ user: res.user, token: res.token }));
+        navigate("/home");
+        dispatch(
+          setToast({
+            text: "Registration successful, Logged in",
+            type: "success",
+          })
+        );
+        smoothScrollToTop();
+      }
     }
   };
 
@@ -76,6 +94,7 @@ const Registration = () => {
               inputOnChange={inputOnChange}
             />
           ))}
+          {serverError && <p className="login-reg-input-error-message">{serverError ? serverError : ""}</p>}
           <button type="submit" className="login-reg-button">
             SIGN UP
           </button>
