@@ -9,6 +9,7 @@ import org.springframework.validation.BindingResult;
 import com.auctionapp.dto.AuthResponse;
 import com.auctionapp.dto.LoginRequest;
 import com.auctionapp.dto.RegisterRequest;
+import com.auctionapp.dto.UserDTO;
 import com.auctionapp.entity.User;
 import com.auctionapp.entity.UserProfile;
 import com.auctionapp.exception.EmailAlreadyExistsException;
@@ -58,7 +59,10 @@ public class AuthService {
         userProfileRepo.save(profile);
 
         String jwt = jwtService.generateToken(user);
-        return new AuthResponse(jwt);
+        UserDTO userDTO = new UserDTO(user.getFirstName(), user.getLastName(), user.getEmail(), user.getRole());
+
+        return new AuthResponse(jwt, userDTO);
+
     }
 
     public AuthResponse login(LoginRequest req, BindingResult result) {
@@ -74,6 +78,8 @@ public class AuthService {
         }
 
         String jwt = jwtService.generateToken(user);
-        return new AuthResponse(jwt);
+        UserDTO userDTO = new UserDTO(user.getFirstName(), user.getLastName(), user.getEmail(), user.getRole());
+
+        return new AuthResponse(jwt, userDTO);
     }
 }

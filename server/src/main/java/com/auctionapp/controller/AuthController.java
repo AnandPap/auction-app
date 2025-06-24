@@ -33,4 +33,11 @@ public class AuthController {
     public ResponseEntity<AuthResponse> login(@Valid @RequestBody LoginRequest request, BindingResult result) {
         return ResponseEntity.ok(authService.login(request, result));
     }
+
+    // @PostMapping("/logout")
+    // public ResponseEntity<LogoutResponse> logout() {
+    // // Optional: invalidate token, clear session, etc.
+    // return ResponseEntity.ok(new LogoutResponse(true, "Logged out
+    // successfully."));
+    // }
 }

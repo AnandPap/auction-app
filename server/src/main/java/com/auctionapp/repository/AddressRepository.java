@@ -7,10 +7,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import com.auctionapp.entity.Address;
-import com.auctionapp.entity.Payment;
 
 @Repository
-public interface AddressRepository extends JpaRepository<Payment, Long> {
+public interface AddressRepository extends JpaRepository<Address, Long> {
     List<Address> findByCity(String city);
 
     Optional<Address> findByIdAndZipCode(Long id, String zipCode);
