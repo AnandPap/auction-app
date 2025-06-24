@@ -74,12 +74,11 @@ public class UserProfile {
 
     @NotNull
     @Builder.Default
-    private Boolean activated = Boolean.FALSE;
+    private Boolean activated = Boolean.TRUE;
 
     @Enumerated(EnumType.STRING)
-    @Builder.Default
     @Column(name = "notification_type")
-    private NotificationType notificationType = NotificationType.EMAIL;
+    private NotificationType notificationType;
 
     @CreationTimestamp
     @Column(name = "created_at", nullable = false, updatable = false)

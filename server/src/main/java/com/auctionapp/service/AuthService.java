@@ -10,8 +10,10 @@ import com.auctionapp.dto.AuthResponse;
 import com.auctionapp.dto.LoginRequest;
 import com.auctionapp.dto.RegisterRequest;
 import com.auctionapp.entity.User;
+import com.auctionapp.entity.UserProfile;
 import com.auctionapp.exception.EmailAlreadyExistsException;
 import com.auctionapp.exception.ValidationException;
+import com.auctionapp.repository.UserProfileRepository;
 import com.auctionapp.repository.UserRepository;
 
 @Service
@@ -20,9 +22,12 @@ public class AuthService {
     private final UserRepository userRepo;
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
+    private final UserProfileRepository userProfileRepo;
 
-    public AuthService(UserRepository userRepo, PasswordEncoder passwordEncoder, JwtService jwtService) {
+    public AuthService(UserRepository userRepo, UserProfileRepository userProfileRepo, PasswordEncoder passwordEncoder,
+            JwtService jwtService) {
         this.userRepo = userRepo;
+        this.userProfileRepo = userProfileRepo;
         this.passwordEncoder = passwordEncoder;
         this.jwtService = jwtService;
     }
@@ -46,6 +51,12 @@ public class AuthService {
 
         userRepo.save(user);
 
+        UserProfile profile = UserProfile.builder()
+                .user(user)
+                .build();
+
+        userProfileRepo.save(profile);
+
         String jwt = jwtService.generateToken(user);
         return new AuthResponse(jwt);
     }
@@ -56,10 +67,10 @@ public class AuthService {
         }
 
         User user = userRepo.findByEmail(req.getEmail())
-                .orElseThrow(() -> new UsernameNotFoundException("User with email " + req.getEmail() + " not found"));
+                .orElseThrow(() -> new UsernameNotFoundException("Email and password combination is incorrect"));
 
         if (!passwordEncoder.matches(req.getPassword(), user.getPassword())) {
-            throw new BadCredentialsException("Email or password is incorrect");
+            throw new BadCredentialsException("Email and password combination is incorrect");
         }
 
         String jwt = jwtService.generateToken(user);
