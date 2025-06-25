@@ -12,4 +12,12 @@ public class UserDTO {
     private String lastName;
     private String email;
     private User.Role role;
+
+    public static UserDTO fromEntity(User user) {
+        return new UserDTO(
+                user.getFirstName(),
+                user.getLastName(),
+                user.getEmail(),
+                user.getRole());
+    }
 }

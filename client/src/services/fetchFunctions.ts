@@ -20,6 +20,35 @@ export const logInUser = async (loginDetails: LogInRequest) => {
   }
 };
 
+export const fetchProducts = async () => {
+  try {
+    const res = await axiosInstance.get("/api/products");
+    return res.data;
+  } catch (err) {
+    return getAxiosErrorObject(err);
+  }
+};
+
+// export const fetchProducts = async () => {
+//   try {
+//     const storageRedux = localStorage.getItem("reduxStore");
+//     if (storageRedux) {
+//       const localRedux: { auctionapp: AuctionAppState } = JSON.parse(storageRedux);
+
+//       const res = await axiosInstance.get("/api/users", {
+//         headers: {
+//           Authorization: `Bearer ${localRedux.auctionapp.auth.token}`,
+//         },
+//       });
+//       return res.data;
+//     } else {
+//       return { token: null, user: null, error: "No auth token present", success: false };
+//     }
+//   } catch (err) {
+//     return getAxiosErrorObject(err);
+//   }
+// };
+
 // export const logOutUser = async () => {
 //   try {
 //     const res = await axiosInstance.post("/api/auth/logout");
