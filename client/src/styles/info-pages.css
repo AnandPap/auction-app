@@ -1,0 +1,114 @@
+.about-us-page {
+  margin: 3rem 10rem 5rem;
+}
+.terms-and-conditions-page,
+.privacy-and-policy-page {
+  margin: 3rem auto 5rem;
+  width: 700px;
+}
+.terms-and-conditions-title,
+.privacy-and-policy-title {
+  margin: 0 0 3rem;
+}
+.terms-and-conditions-subtitle,
+.privacy-and-policy-subtitle {
+  margin: 2rem auto 1rem;
+}
+.privacy-and-policy-section > p {
+  margin-top: 1rem;
+}
+.about-us-container {
+  display: flex;
+  gap: 2rem;
+}
+.about-us-section {
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  flex-grow: 1;
+}
+.about-us-images-wrapper {
+  width: 400px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 1rem;
+}
+.img1 {
+  grid-column: 1 / span 2;
+  grid-row: 1;
+  width: 100%;
+}
+.img2 {
+  grid-column: 1;
+  grid-row: 2;
+  width: 100%;
+}
+.img3 {
+  grid-column: 2;
+  grid-row: 2;
+  width: 100%;
+}
+.pale-text {
+  color: hsl(0, 0%, 40%);
+}
+
+.not-found-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0rem 0 6rem;
+}
+.auction-logo {
+  margin: 2rem 0 3rem;
+}
+.four-o-four {
+  color: var(--purple);
+  font-size: 10rem;
+  text-shadow: 3px 3px 0px var(--shadow-gray);
+}
+.not-found-message {
+  margin: 4rem 0 2rem;
+}
+
+.error-boundary-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+}
+.error-boundary-title {
+  font-size: 1.875rem;
+  font-weight: 700;
+  margin: 0;
+  margin-bottom: 0.5rem;
+}
+.error-boundary-buttons-container {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+.refresh-button,
+.back-button {
+  padding: 0.75rem 0.875rem;
+  width: 125px;
+}
+.refresh-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+.arrow-left {
+  --arrow-left-size: 6px;
+  display: inline-block;
+  width: var(--arrow-left-size);
+  height: var(--arrow-left-size);
+  border-bottom: calc(var(--arrow-left-size) / 3) solid black;
+  border-left: calc(var(--arrow-left-size) / 3) solid black;
+  transform: rotate(45deg);
+  margin-right: 5px;
+  margin-bottom: 2px;
+}
