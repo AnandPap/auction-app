@@ -12,6 +12,8 @@ import com.auctionapp.dto.LoginRequest;
 import com.auctionapp.dto.RegisterRequest;
 import com.auctionapp.service.AuthService;
 
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.ExampleObject;
 import jakarta.validation.Valid;
 
 @RestController
@@ -25,11 +27,26 @@ public class AuthController {
     }
 
     @PostMapping("/register")
+    @io.swagger.v3.oas.annotations.parameters.RequestBody(description = "User registration request", required = true, content = @Content(mediaType = "application/json", examples = @ExampleObject(name = "Example Registration", value = """
+            {
+              "firstName": "John",
+              "lastName": "Doe",
+              "email": "john@example.com",
+              "password": "secret123",
+              "confirmPassword": "secret123"
+            }
+            """)))
     public ResponseEntity<AuthResponse> register(@Valid @RequestBody RegisterRequest request, BindingResult result) {
         return ResponseEntity.ok(authService.register(request, result));
     }
 
     @PostMapping("/login")
+    @io.swagger.v3.oas.annotations.parameters.RequestBody(description = "Login request", required = true, content = @Content(mediaType = "application/json", examples = @ExampleObject(name = "Login Example", value = """
+            {
+              "email": "john@example.com",
+              "password": "secret123"
+            }
+            """)))
     public ResponseEntity<AuthResponse> login(@Valid @RequestBody LoginRequest request, BindingResult result) {
         return ResponseEntity.ok(authService.login(request, result));
     }

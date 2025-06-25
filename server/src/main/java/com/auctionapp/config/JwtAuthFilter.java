@@ -2,6 +2,7 @@ package com.auctionapp.config;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -9,6 +10,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
+import com.auctionapp.entity.User;
 import com.auctionapp.repository.UserRepository;
 import com.auctionapp.service.JwtService;
 
@@ -44,10 +46,14 @@ public class JwtAuthFilter extends OncePerRequestFilter {
         userEmail = jwtService.extractEmail(jwt);
 
         if (userEmail != null && SecurityContextHolder.getContext().getAuthentication() == null) {
-            var user = userRepository.findByEmail(userEmail).orElse(null);
-            if (user != null && jwtService.validateToken(jwt, user)) {
+            Optional<User> user = userRepository.findByEmail(userEmail);
+
+            if (user.isPresent() && jwtService.validateToken(jwt, user.get())) {
+                var authorities = List.of(new SimpleGrantedAuthority("ROLE_" + user.get().getRole().name()));
+
                 var authToken = new UsernamePasswordAuthenticationToken(
-                        user, null, List.of(new SimpleGrantedAuthority("ROLE_" + user.getRole())));
+                        user, null, authorities);
+
                 SecurityContextHolder.getContext().setAuthentication(authToken);
             }
         }
