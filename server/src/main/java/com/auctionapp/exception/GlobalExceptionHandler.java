@@ -24,6 +24,6 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(EmailAlreadyExistsException.class)
     public ResponseEntity<AuthResponse> handleEmailExistsException(EmailAlreadyExistsException ex) {
-        return ResponseEntity.badRequest().body(new AuthResponse(ex.getMessage(), true));
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(new AuthResponse(ex.getMessage(), true));
     }
 }

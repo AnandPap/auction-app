@@ -27,7 +27,8 @@ const Login = () => {
   const handleLogIn = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const res = await logInUser(loginDetails);
-    if (!res || "code" in res) setError("Unexpected error occured");
+    if (!res) setError("Unexcpected error has occured");
+    else if ("code" in res) setError(res.errorData.error || "Unexcpected error has occured");
     else if (res.token === null) {
       setError(res.error || "Login failed");
     } else {

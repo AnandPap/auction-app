@@ -55,6 +55,9 @@ button {
   gap: 0.5rem;
   font-size: larger;
 }
+.toast-box > p {
+  white-space: pre-line;
+}
 .toast-box.show {
   top: 30px;
 }

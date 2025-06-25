@@ -49,6 +49,7 @@
   color: red;
   margin: 0;
   font-size: 0.9rem;
+  white-space: pre-line;
 }
 .login-reg-button {
   color: white;

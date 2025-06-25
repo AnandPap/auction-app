@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
-import { logout, selectAuth, setToast } from "../redux/auctionapp";
+import { logout, selectAuth } from "../redux/auctionapp";
 import IconGroup from "./IconGroup";
 
 const Header = () => {
@@ -10,12 +10,6 @@ const Header = () => {
 
   const handleLogout = () => {
     dispatch(logout());
-    dispatch(
-      setToast({
-        text: "Logout successful",
-        type: "success",
-      })
-    );
   };
 
   return (
@@ -25,7 +19,7 @@ const Header = () => {
         <div>
           Welcome{" "}
           {auth.isGuest ? (
-            '"John Doe"'
+            "Guest"
           ) : (
             <Link to="/user-profile" className="router-link">
               <span className="header-user-name">{auth.user?.firstName + " " + auth.user?.lastName}</span>

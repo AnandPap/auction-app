@@ -39,7 +39,7 @@ public class AuthService {
         }
 
         if (userRepo.existsByEmail(req.getEmail())) {
-            throw new EmailAlreadyExistsException("Email already exists");
+            throw new EmailAlreadyExistsException("An account with email '" + req.getEmail() + "' already exists");
         }
 
         User user = User.builder()
