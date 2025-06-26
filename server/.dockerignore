@@ -1,0 +1,9 @@
+sql/
+target/
+.dockerignore
+.env*
+.gitattributes
+.gitignore
+docker-compose.yml
+Dockerfile
+HELP.md

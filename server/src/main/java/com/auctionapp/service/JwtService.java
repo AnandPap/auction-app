@@ -10,16 +10,15 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
+import org.springframework.beans.factory.annotation.Value;
 
 @Component
 public class JwtService {
 
-    private static final String SECRET = "secretkeysecretkeysecretkeysecretkeysecretkeysecretkeysecretkeysecretkey";
-
     private final Key key;
 
-    public JwtService() {
-        this.key = Keys.hmacShaKeyFor(SECRET.getBytes());
+    public JwtService(@Value("${JWT_SECRET}") String secret) {
+        this.key = Keys.hmacShaKeyFor(secret.getBytes());
     }
 
     public String generateToken(User user) {
