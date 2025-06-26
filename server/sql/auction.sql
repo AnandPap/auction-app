@@ -1,8 +1,8 @@
 --DROP CAST IF EXISTS (CHARACTER VARYING as user_role);
 DROP TABLE IF EXISTS user_profiles;
-DROP TABLE IF EXISTS addresses;
 DROP TABLE IF EXISTS payment_methods;
 DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS addresses;
 
 DROP TYPE IF EXISTS user_role;
 DROP TYPE IF EXISTS gender_enum;
@@ -19,16 +19,28 @@ CREATE TYPE provider_enum AS ENUM ('STRIPE', 'PAYPAL');
 -- Zamijenjeno sa ?stringtype=unspecified ali sacuvano kao referenca
 -- CREATE CAST (CHARACTER VARYING as user_role) WITH INOUT AS IMPLICIT;
 
+CREATE TABLE IF NOT EXISTS addresses (
+    id BIGSERIAL PRIMARY KEY,
+    street VARCHAR(100) NOT NULL,
+    city VARCHAR(100) NOT NULL,
+    state VARCHAR(50),
+    country VARCHAR(50) NOT NULL,
+    zip_code VARCHAR(20) NOT NULL,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    version INTEGER
+);
+
 CREATE TABLE IF NOT EXISTS users (
 	-- BIGSERIAL umjesto SERIAL zbog Long Id u Springu
     id BIGSERIAL PRIMARY KEY,
-	address_id INTEGER,
+	address_id BIGINT,
     first_name VARCHAR(50) NOT NULL,
     last_name VARCHAR(50) NOT NULL,
     email VARCHAR(255) UNIQUE NOT NULL,
     password VARCHAR(100) NOT NULL,
     role user_role NOT NULL DEFAULT 'USER',
-    created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP
+    created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_user_profiles_user FOREIGN KEY (address_id) REFERENCES addresses(id) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS user_profiles (
@@ -45,17 +57,6 @@ CREATE TABLE IF NOT EXISTS user_profiles (
     CONSTRAINT fk_user_profiles_user FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
-CREATE TABLE IF NOT EXISTS addresses (
-    id BIGSERIAL PRIMARY KEY,
-    street VARCHAR(100) NOT NULL,
-    city VARCHAR(100) NOT NULL,
-    state VARCHAR(50),
-    country VARCHAR(50) NOT NULL,
-    zip_code VARCHAR(20) NOT NULL,
-    created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    version INTEGER
-);
-
 CREATE TABLE IF NOT EXISTS payment_methods (
     id BIGSERIAL PRIMARY KEY,
     user_id BIGINT NOT NULL,
@@ -64,7 +65,7 @@ CREATE TABLE IF NOT EXISTS payment_methods (
     provider provider_enum NOT NULL,
     token VARCHAR(255) NOT NULL,
     paypal_email VARCHAR(100),
-    last_four_digits CHAR(4),
+    last_four_digits VARCHAR(4),
     expiration_year INTEGER,
     expiration_month INTEGER,
     credit_card_brand VARCHAR(30),
