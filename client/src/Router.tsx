@@ -1,7 +1,4 @@
-import { useEffect } from "react";
-import { BrowserRouter, redirect, Route, Routes } from "react-router";
-import { useAppSelector } from "./redux/hooks";
-import { selectAuth } from "./redux/auctionapp";
+import { BrowserRouter, Route, Routes } from "react-router";
 import ErrorBoundary from "./pages/ErrorBoundary";
 import Layout from "./layouts/Layout";
 import Login from "./pages/Login";
@@ -20,15 +17,6 @@ import PublicRoute from "./components/PublicRoute";
 // };
 
 const Router = () => {
-  const auth = useAppSelector(selectAuth);
-
-  useEffect(() => {
-    if (location.pathname === "/")
-      if (auth.token || auth.isGuest) redirect("/home");
-      else redirect("/login");
-    //eslint-disable-next-line
-  }, []);
-
   return (
     <BrowserRouter>
       <ErrorBoundary>
