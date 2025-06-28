@@ -14,7 +14,7 @@ public class WebConfig {
     @Value("${FRONTEND_DEV_ORIGIN:http://localhost:5173}")
     private String devOrigin;
 
-    @Value("${FRONTEND_PROD_ORIGIN}")
+    @Value("${FRONTEND_PROD_ORIGIN:http://localhost:5173}")
     private String prodOrigin;
 
     @Bean
