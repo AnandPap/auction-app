@@ -1,6 +1,7 @@
 package com.auctionapp.service;
 
 import java.security.Key;
+import java.security.SecureRandom;
 import java.util.Date;
 
 import com.auctionapp.entity.User;
@@ -17,8 +18,15 @@ public class JwtService {
 
     private final Key key;
 
-    public JwtService(@Value("${JWT_SECRET}") String secret) {
-        this.key = Keys.hmacShaKeyFor(secret.getBytes());
+    // Without value after : below, it means use an empty string
+    public JwtService(@Value("${JWT_SECRET:}") String secret) {
+        if (secret == null || secret.trim().isEmpty()) {
+            byte[] randomBytes = new byte[64];
+            new SecureRandom().nextBytes(randomBytes);
+            this.key = Keys.hmacShaKeyFor(randomBytes);
+        } else {
+            this.key = Keys.hmacShaKeyFor(secret.getBytes());
+        }
     }
 
     public String generateToken(User user) {
